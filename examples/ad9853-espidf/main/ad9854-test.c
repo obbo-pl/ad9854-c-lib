@@ -30,7 +30,7 @@ void clkin_generator_stop(ledc_channel_t channel_num);
 
 /* Test setup
  * ---------------------
- * AD9854ASTZ
+ * AD9854ASQ
  * CLKIN:       5MHz
  * Mode:        Single Tone
  * Frequency:   2740 Hz
@@ -46,7 +46,7 @@ void app_main(void)
 	// Initialization
     clkin_generator_start(LEDC_TIMER_0, LEDC_CHANNEL_0, GPIO_NUM_15, 5000000);
     vTaskDelay(10 / portTICK_PERIOD_MS);
-   	err = ad9854_init(AD9854ASTZ, 5000000, false);
+   	err = ad9854_init(AD9854ASQ, 5000000, false);
    	if (err != AD9854_OK) ESP_LOGE(TAG, "Init failed: %s", esp_err_to_name(err));
    	clkin_generator_stop(LEDC_CHANNEL_0);
    	// Switch to an external update clock

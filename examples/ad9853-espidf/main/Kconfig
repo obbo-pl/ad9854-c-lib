@@ -1,0 +1,91 @@
+menu "AD9854"
+
+    config AD9854_SPI_MISO
+        int "GPIO for SPI MISO."
+		range 0 39
+		default 21
+			
+    config AD9854_SPI_MOSI
+        int "GPIO for SPI MOSI."
+		range 0 39
+		default 23
+
+    config AD9854_SPI_CLK
+        int "GPIO for SPI CLK."
+		range 0 39
+		default 19
+			
+    config AD9854_SPI_CS
+        int "GPIO for SPI CS."
+		range 0 39
+		default 22
+
+    config AD9854_SPI_RST
+        int "GPIO for SPI RST."
+		range 0 39
+		default 18
+
+    choice
+		prompt "SPI bus frequency"
+		
+		config SPI_FREQ_HZ_10K
+			bool "10kHz"
+		config SPI_FREQ_HZ_20K
+			bool "20kHz"
+		config SPI_FREQ_HZ_40K
+			bool "40kHz"
+		config SPI_FREQ_HZ_80K
+			bool "80kHz"
+		config SPI_FREQ_HZ_100K
+			bool "100kHz"
+		config SPI_FREQ_HZ_200K
+			bool "200kHz"
+		config SPI_FREQ_HZ_400K
+			bool "400kHz"
+		config SPI_FREQ_HZ_800K
+			bool "800kHz"
+		config SPI_FREQ_HZ_1M
+			bool "1MHz"
+		config SPI_FREQ_HZ_2M
+			bool "2MHz"
+		config SPI_FREQ_HZ_4M
+			bool "4MHz"
+		config SPI_FREQ_HZ_8M
+			bool "8MHz"
+		config SPI_FREQ_HZ_10M
+			bool "10MHz"
+	endchoice 						
+
+    config AD9854_SPI_FREQ_HZ
+        int
+        default 100000
+		default 10000 if SPI_FREQ_HZ_10K
+		default 20000 if SPI_FREQ_HZ_20K
+		default 40000 if SPI_FREQ_HZ_40K
+		default 80000 if SPI_FREQ_HZ_80K
+		default 100000 if SPI_FREQ_HZ_100K
+		default 200000 if SPI_FREQ_HZ_200K
+		default 400000 if SPI_FREQ_HZ_400K
+		default 800000 if SPI_FREQ_HZ_800K
+		default 1000000 if SPI_FREQ_HZ_1M
+		default 2000000 if SPI_FREQ_HZ_2M
+		default 4000000 if SPI_FREQ_HZ_4M
+		default 8000000 if SPI_FREQ_HZ_8M
+		default 10000000 if SPI_FREQ_HZ_10M
+        
+    config AD9854_SPI_IO_MASTER_RESET
+        int "GPIO for MASTER RESET."
+		range 0 39
+		default 5
+
+    config AD9854_SPI_IO_UPDATE_CLOCK
+        int "GPIO for UPDATE CLOCK."
+		range 0 39
+		default 4
+			
+	
+endmenu
+
+
+
+

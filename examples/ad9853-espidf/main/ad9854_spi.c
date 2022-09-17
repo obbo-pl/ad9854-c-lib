@@ -125,6 +125,7 @@ esp_err_t ad9854_spi_write_reg(uint8_t cmd, uint8_t* data_wr, size_t size)
             if (result == ESP_OK) {
                 ad9854_delay_microseconds(1);
                 result = gpio_set_level(AD9854_SPI_IO_UPDATE_CLOCK, 0);
+                ad9854_delay_microseconds(1);
             }
         }
     }
